@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Panel\AdminController;
 use App\Http\Controllers\Panel\BlogController;
+use App\Http\Controllers\Panel\FaqController;
 use App\Http\Controllers\Panel\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -60,6 +61,27 @@ Route::group(
                 });
 
             });
+            Route::group(['prefix' => 'faqs' , 'as' => 'faqs.'], function () {
+
+                Route::get('/', [FaqController::class, 'index'])->name('index');
+                Route::get('/datatable', [FaqController::class, 'datatable'])->name('datatable');
+
+
+                Route::group(['prefix' => 'create'], function (){
+                    Route::get('/',[FaqController::class , 'create'])->name('create');
+                    Route::post('/',[FaqController::class , 'store'])->name('store');
+                });
+
+                Route::group(['prefix' => '{id}'], function (){
+                    Route::get('/edit',[FaqController::class , 'edit'])->name('edit');
+                    Route::put('/edit',[FaqController::class , 'update'])->name('update');
+                    Route::delete('/',[FaqController::class , 'destroy'])->name('destroy');
+                    Route::post('/operation',[FaqController::class , 'operation'])->name('operation');
+                });
+
+            });
+
+
         });
     });
 

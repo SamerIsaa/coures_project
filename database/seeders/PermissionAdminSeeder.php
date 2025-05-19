@@ -29,6 +29,11 @@ class PermissionAdminSeeder extends Seeder
             ['name' => 'manage_roles', 'guard_name' => $guard_name,],
             ['name' => 'add_admins', 'guard_name' => $guard_name,],
             ['name' => 'show_admins', 'guard_name' => $guard_name,],
+
+
+            ['name' => 'manage_blogs', 'guard_name' => $guard_name,],
+
+
         ];
 
         $admin = Admin::query()->where('email', 'admin@admin.com')->first();
