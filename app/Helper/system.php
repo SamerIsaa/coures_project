@@ -5,7 +5,10 @@ use Illuminate\Http\Request;
 
 function locales()
 {
-    return LaravelLocalization::getSupportedLocales();
+    $locales = LaravelLocalization::getSupportedLocales();
+    return collect($locales)->map(function ($locale) {
+        return $locale['name'];
+    });
 }
 
 function filterDataTable($items, $resource, Request $request, $relations = [])

@@ -9,6 +9,7 @@ use App\Http\Requests\Panel\BlogRequest;
 use App\Http\Resources\Panel\AdminResource;
 use App\Http\Resources\Panel\BlogResource;
 use App\Models\Admin;
+use App\Models\Blog;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -23,7 +24,7 @@ class BlogController extends Controller
 
     public function datatable()
     {
-        $items = Admin::query()->latest()->filter();
+        $items = Blog::query()->latest()->filter();
         $resource = new BlogResource($items);
 
         return filterDataTable($items, $resource, request());
@@ -31,17 +32,13 @@ class BlogController extends Controller
 
     public function create()
     {
-        $data['roles'] = Role::query()->get();
-        return view('panel.blogs.create', $data);
+        return view('panel.blogs.create');
     }
 
     public function store(BlogRequest $request)
     {
         $data = $request->all();
-
-        $data['password'] = Hash::make($data['password']);
-        $admin = Admin::query()->create($data);
-        $admin->assignRole((int)$request->role_id);
+        Blog::query()->create($data)->createTranslation($request);
         return response()->json([
             'status' => true,
             'message' => __('messages.done_successfully')
@@ -51,15 +48,14 @@ class BlogController extends Controller
 
     public function edit($id)
     {
-        $data['item'] = Admin::query()->findOrFail($id);
-        $data['roles'] = Role::query()->get();
+        $data['item'] = Blog::query()->findOrFail($id);
         return view('panel.blogs.create', $data);
 
     }
 
-    public function update($id, AdminRequest $request)
+    public function update($id, BlogRequest $request)
     {
-        $item = Admin::query()->find($id);
+        $item = Blog::query()->find($id);
         if (!$item) {
             return response()->json([
                 'status' => false,
@@ -67,14 +63,10 @@ class BlogController extends Controller
             ], 404);
         }
         $data = $request->all();
-        if ($request->password) {
-            $data['password'] = Hash::make($data['password']);
-        } else {
-            $data['password'] = $item->password;
-        }
 
         $item->update($data);
-        $item->assignRole((int)$request->role_id);
+        $item->createTranslation($request);
+
         return response()->json([
             'status' => true,
             'message' => __('messages.done_successfully')
@@ -84,7 +76,7 @@ class BlogController extends Controller
 
     public function destroy($id)
     {
-        $item = Admin::query()->find($id);
+        $item = Blog::query()->find($id);
 
         if (isset($item) && $item->delete()) {
             return response()->json([
@@ -102,7 +94,7 @@ class BlogController extends Controller
 
     public function operation($id)
     {
-        $item = Admin::query()->find($id);
+        $item = Blog::query()->find($id);
         if (isset($item)) {
             $item->is_active = !$item->is_active;
             $item->save();

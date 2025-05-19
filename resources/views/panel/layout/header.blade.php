@@ -30,7 +30,7 @@
                             <li class="navi-item">
                                 <a href="{{ \Mcamara\LaravelLocalization\Facades\LaravelLocalization::getLocalizedURL($k)}}" class="navi-link">
 
-                                    <span class="navi-text">{{ $locale['name'] }}</span>
+                                    <span class="navi-text">{{ $locale }}</span>
                                 </a>
                             </li>
                         @endforeach

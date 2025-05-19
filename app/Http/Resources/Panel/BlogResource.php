@@ -16,11 +16,10 @@ class BlogResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'name' => $this['name'],
-            'email' => $this['email'],
+            'title' => $this['title'],
             'created_at' => Carbon::parse($this['created_at'])->format('Y-m-d'),
-            'active' => view('panel.admins.partials.active_status' , ['instance' => $this])->render(),
-            'options' => view('panel.admins.partials.options' , ['instance' => $this])->render()
+            'active' => view('panel.blogs.partials.active_status' , ['instance' => $this])->render(),
+            'options' => view('panel.blogs.partials.options' , ['instance' => $this])->render()
         ];
     }
 }

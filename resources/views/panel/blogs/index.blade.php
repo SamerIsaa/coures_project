@@ -1,4 +1,4 @@
-@extends('panel.layout.master' , ['title' => __('panel.admins')])
+@extends('panel.layout.master' , ['title' => __('panel.articles')])
 @section('content')
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 
@@ -23,7 +23,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-xl-4 d-flex justify-content-end">
-                                <a href="{{ route('panel.admins.create') }}"
+                                <a href="{{ route('panel.blogs.create') }}"
                                    class="btn btn-primary font-weight-bolder">
 											<span class="svg-icon svg-icon-md">
 												<i class="fa fa-plus"></i>
@@ -49,7 +49,7 @@
     <script src="{{ asset('panelAssets/js/data-ajax.js') }}"></script>
 
     <script>
-        window.data_url = '{{route('panel.admins.datatable')}}';
+        window.data_url = '{{route('panel.blogs.datatable')}}';
         window.columns = [
             {
                 field: ' ',
@@ -61,14 +61,8 @@
                 },
             },
             {
-                field: 'name',
-                title: '@lang('panel.name')',
-                selector: false,
-                textAlign: 'center',
-            },
-            {
-                field: 'email',
-                title: '@lang('panel.email')',
+                field: 'title',
+                title: '@lang('panel.title')',
                 selector: false,
                 textAlign: 'center',
             },
