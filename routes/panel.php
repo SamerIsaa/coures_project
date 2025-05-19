@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Panel\AdminController;
 use App\Http\Controllers\Panel\BlogController;
+use App\Http\Controllers\Panel\CourseController;
 use App\Http\Controllers\Panel\FaqController;
 use App\Http\Controllers\Panel\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -77,6 +78,26 @@ Route::group(
                     Route::put('/edit',[FaqController::class , 'update'])->name('update');
                     Route::delete('/',[FaqController::class , 'destroy'])->name('destroy');
                     Route::post('/operation',[FaqController::class , 'operation'])->name('operation');
+                });
+
+            });
+
+            Route::group(['prefix' => 'courses' , 'as' => 'courses.'], function () {
+
+                Route::get('/', [CourseController::class, 'index'])->name('index');
+                Route::get('/datatable', [CourseController::class, 'datatable'])->name('datatable');
+
+
+                Route::group(['prefix' => 'create'], function (){
+                    Route::get('/',[CourseController::class , 'create'])->name('create');
+                    Route::post('/',[CourseController::class , 'store'])->name('store');
+                });
+
+                Route::group(['prefix' => '{id}'], function (){
+                    Route::get('/edit',[CourseController::class , 'edit'])->name('edit');
+                    Route::put('/edit',[CourseController::class , 'update'])->name('update');
+                    Route::delete('/',[CourseController::class , 'destroy'])->name('destroy');
+                    Route::post('/operation',[CourseController::class , 'operation'])->name('operation');
                 });
 
             });
