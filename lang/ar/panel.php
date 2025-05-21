@@ -13,6 +13,7 @@ return [
     'site_pages' => 'صفحات الموقع',
     'site_administration' => 'ادارة الموقع',
     'admins' => 'المدراء',
+    'students' => 'الطلاب',
     'profile' => 'الملف الشخصي',
     'bank_name' => 'اسم البنك',
     'roles_permissions' => 'الصلاحيات',

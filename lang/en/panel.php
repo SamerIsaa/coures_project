@@ -10,6 +10,7 @@ return [
     'site_pages' => 'Site pages',
     'site_administration' => 'Site administration',
     'admins' => 'Admins',
+    'students' => 'Students',
     'profile' => 'Profile',
     'roles_permissions' => 'Roles & Permissions',
     'font_size' => 'Font size',

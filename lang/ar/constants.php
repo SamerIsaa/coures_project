@@ -9,7 +9,7 @@ return [
     'subject' => 'الموضوع',
     'password' => 'كلمة المرور',
     'password_confirmation' => 'تأكيد كلمة المرور',
-    'ssn_id' => 'الرقم الشخصي',
+    'ssn_id' => 'الرقم الوطني',
     'name' => 'الإسم',
     'question' => 'السؤال',
     'answer' => 'الإجابة',
