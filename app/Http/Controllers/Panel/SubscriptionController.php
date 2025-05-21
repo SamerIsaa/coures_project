@@ -16,7 +16,10 @@ class SubscriptionController extends Controller
 {
     public function index()
     {
-        return view('panel.subscriptions.index');
+        $data['students'] = Student::query()->get();
+        $data['courses'] = Course::query()->get();
+
+        return view('panel.subscriptions.index' , $data);
     }
 
     public function datatable()

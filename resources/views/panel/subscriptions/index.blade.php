@@ -11,15 +11,28 @@
 
                     <div class="mb-7">
                         <div class="row align-items-center d-flex justify-content-between">
-                            <div class="col-lg-4 col-xl-4">
+                            <div class="col-lg-8 col-xl-8">
                                 <div class="row align-items-center">
-                                    <div class="col-md-12 my-2 my-md-0">
-                                        <div class="input-icon">
-                                            <input type="text" class="form-control" placeholder="بحث..."
-                                                   id="kt_datatable_search_query"/>
-                                            <span><i class="flaticon2-search-1 text-muted"></i></span>
-                                        </div>
+                                    <div class="col-md-6 my-2 my-md-0">
+                                        <select class="form-control selectpicker" name="student_id"
+                                                title="@lang('panel.students')" data-live-search="true" data-size="5">
+                                            @foreach($students as $student)
+                                                <option
+                                                    value="{{$student->id}}" {{ isset($item) && @$item->student_id==$student->id ? 'selected' :'' }} >{{$student->ssn_id . ' | ' . $student->email . ' | ' . $student->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
+
+                                    <div class="col-md-6 my-2 my-md-0">
+                                        <select class="form-control selectpicker" name="course_id"
+                                                title="@lang('panel.courses')" data-live-search="true" data-size="5">
+                                            @foreach($courses as $course)
+                                                <option
+                                                    value="{{$course->id}}" {{ isset($item) && @$item->course_id==$course->id ? 'selected' :'' }} >{{$course->title }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
                                 </div>
                             </div>
                             <div class="col-lg-4 col-xl-4 d-flex justify-content-end">
@@ -110,7 +123,13 @@
             }
         ];
 
-    </script>
+        $(document).on('change', 'select[name=student_id]', function () {
+            datatable.search($(this).val(), 'student_id')
+        });
+        $(document).on('change', 'select[name=course_id]', function () {
+            datatable.search($(this).val(), 'course_id')
+        });
 
+    </script>
 
 @endpush

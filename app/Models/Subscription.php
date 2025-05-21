@@ -18,15 +18,23 @@ class Subscription extends Model
         $request = request();
         $query = $request->get('query', []);
 
-        if (isset($query['generalSearch'])) {
-            $q
-                ->whereHas('student', function ($q) use ($query) {
-                    $q->filter();
-                })
-                ->orWhereHas('course', function ($q) use ($query) {
-                    $q->filter();
-                });
+//        if (isset($query['generalSearch'])) {
+//            $q
+//                ->whereHas('student', function ($q) use ($query) {
+//                    $q->filter();
+//                })
+//                ->orWhereHas('course', function ($q) use ($query) {
+//                    $q->filter();
+//                });
+//
+//        }
 
+        if (isset($query['course_id'])){
+            $q->where('course_id', $query['course_id']);
+        }
+
+        if (isset($query['student_id'])){
+            $q->where('student_id', $query['student_id']);
         }
 
     }
