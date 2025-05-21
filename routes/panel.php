@@ -5,6 +5,7 @@ use App\Http\Controllers\Panel\BlogController;
 use App\Http\Controllers\Panel\CourseController;
 use App\Http\Controllers\Panel\FaqController;
 use App\Http\Controllers\Panel\HomeController;
+use App\Http\Controllers\Panel\LectureController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -93,14 +94,38 @@ Route::group(
                     Route::post('/',[CourseController::class , 'store'])->name('store');
                 });
 
+
                 Route::group(['prefix' => '{id}'], function (){
                     Route::get('/edit',[CourseController::class , 'edit'])->name('edit');
                     Route::put('/edit',[CourseController::class , 'update'])->name('update');
                     Route::delete('/',[CourseController::class , 'destroy'])->name('destroy');
                     Route::post('/operation',[CourseController::class , 'operation'])->name('operation');
+
+                    Route::group(['prefix' => 'lectures' , 'as' => 'lectures.'], function () {
+
+                        Route::get('/', [LectureController::class, 'index'])->name('index');
+                        Route::get('/datatable', [LectureController::class, 'datatable'])->name('datatable');
+
+
+                        Route::group(['prefix' => 'create'], function (){
+                            Route::get('/',[LectureController::class , 'create'])->name('create');
+                            Route::post('/',[LectureController::class , 'store'])->name('store');
+                        });
+
+                        Route::group(['prefix' => '{l_id}'], function (){
+                            Route::get('/edit',[LectureController::class , 'edit'])->name('edit');
+                            Route::put('/edit',[LectureController::class , 'update'])->name('update');
+                            Route::delete('/',[LectureController::class , 'destroy'])->name('destroy');
+                            Route::post('/operation',[LectureController::class , 'operation'])->name('operation');
+                        });
+
+                    });
+
                 });
 
             });
+
+
 
 
         });

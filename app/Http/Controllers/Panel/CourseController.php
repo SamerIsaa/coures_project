@@ -29,7 +29,8 @@ class CourseController extends Controller
 
     public function datatable()
     {
-        $items = Course::query()->latest()->filter();
+        $items = Course::query()->latest()->filter()
+            ->withCount('lectures');
         $resource = new CourseResource  ($items);
 
         return filterDataTable($items, $resource, request());
@@ -44,9 +45,9 @@ class CourseController extends Controller
     {
         $data = $request->all();
 
-        if ($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $path = 'uploads/courses/'. $image->getClientOriginalName();
+            $path = 'uploads/courses/' . $image->getClientOriginalName();
             $image->move('uploads/courses/', $image->getClientOriginalName());
             $data['image'] = $path;
         }
@@ -76,9 +77,9 @@ class CourseController extends Controller
         }
         $data = $request->all();
 
-        if ($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $path = 'uploads/courses/'. $image->getClientOriginalName();
+            $path = 'uploads/courses/' . $image->getClientOriginalName();
             $image->move('uploads/courses/', $image->getClientOriginalName());
             $data['image'] = $path;
         }

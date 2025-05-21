@@ -22,6 +22,7 @@ return [
     'bank_accounts'  => 'الحسابات البنكية',
     'faq'  => 'الاسئلة الشائعة',
     'courses'  => 'الدورات',
+    'lectures'  => 'المحاضرات',
     'banks' => 'البنوك',
     'phone_code' => 'مقدمة الدولة',
     'product_name' => 'اسم المنتج',

@@ -26,6 +26,7 @@ return [
     'bank_account'  => 'Bank Account',
     'faq'  => 'FAQs',
     'courses'  => 'Courses',
+    'lectures'  => 'Lectures',
     'add_new' => 'Add New',
     'logout' => 'Sign Out',
     'hello' => 'Hello',

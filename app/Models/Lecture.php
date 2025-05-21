@@ -7,13 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
-class Course extends Model
+class Lecture extends Model
 {
-    use SoftDeletes, Translatable;
-
-    public $translationModel = CourseTranslation::class;
-    public $translatedAttributes = ['title', 'description', 'instructor', 'category'];
-    protected $fillable = ['is_active', 'image'];
+    use  Translatable;
+    public $translationModel = LectureTranslation::class;
+    public $translatedAttributes = ['title', 'description'];
+    protected $fillable = ['is_active' , 'video_link' , 'course_id'];
 
     public function createTranslation(Request $request)
     {
@@ -34,16 +33,9 @@ class Course extends Model
         $query = $request->get('query', []);
 
         if (isset($query['generalSearch'])) {
-            $q->whereTranslationLike('title', 'like', '%' . $query['generalSearch'] . '%')
-                ->orwhereTranslationLike('description', 'like', '%' . $query['generalSearch'] . '%')
-                ->orwhereTranslationLike('instructor', 'like', '%' . $query['generalSearch'] . '%')
-                ->orwhereTranslationLike('category', 'like', '%' . $query['generalSearch'] . '%');
+            $q->whereTranslationLike('title', '%' . $query['generalSearch'] . '%')
+                ->orwhereTranslationLike('description',  '%' . $query['generalSearch'] . '%');
         }
-    }
-
-    public function lectures()
-    {
-        return $this->hasMany(Lecture::class);
     }
 
 }
