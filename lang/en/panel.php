@@ -84,6 +84,7 @@ return [
     'ended_at' => 'Ended at',
     'no_expiration_date' => 'My subscription has no expiration date',
     'cancel_subscription' => 'Cancel subscription',
+    'subscriptions' => 'Subscriptions',
     'active_subscription' => 'Active subscription',
     'total_monthly_subscriptions' => 'Total monthly subscriptions',
     'arrears_of_monthly_subscriptions' => 'Arrears of monthly subscriptions',

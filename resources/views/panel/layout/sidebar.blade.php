@@ -220,6 +220,37 @@
                     </div>
                 </li>
 
+                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                    <a href="javascript:;" class="menu-link menu-toggle">
+										<span class="svg-icon menu-icon">
+                                            <i class="fa fa-plus"></i>
+										</span>
+                        <span class="menu-text">@lang('panel.subscriptions')</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="menu-submenu">
+                        <i class="menu-arrow"></i>
+                        <ul class="menu-subnav">
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{ route('panel.subscriptions.index') }}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">@lang('constants.all')</span>
+                                </a>
+                            </li>
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{ route('panel.subscriptions.create') }}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">@lang('constants.add')</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
 
             </ul>
             <!--end::Menu Nav-->

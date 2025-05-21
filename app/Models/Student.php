@@ -25,4 +25,13 @@ class Student extends Model
         }
     }
 
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class);
+    }
+
+    public function course()
+    {
+        return $this->hasManyThrough(Course::class, Subscription::class);
+    }
 }

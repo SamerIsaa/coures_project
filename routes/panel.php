@@ -7,6 +7,7 @@ use App\Http\Controllers\Panel\FaqController;
 use App\Http\Controllers\Panel\HomeController;
 use App\Http\Controllers\Panel\LectureController;
 use App\Http\Controllers\Panel\StudentController;
+use App\Http\Controllers\Panel\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -143,6 +144,26 @@ Route::group(
                     Route::put('/edit',[StudentController::class , 'update'])->name('update');
                     Route::delete('/',[StudentController::class , 'destroy'])->name('destroy');
                     Route::post('/operation',[StudentController::class , 'operation'])->name('operation');
+                });
+
+            });
+
+            Route::group(['prefix' => 'subscriptions' , 'as' => 'subscriptions.'], function () {
+
+                Route::get('/', [SubscriptionController::class, 'index'])->name('index');
+                Route::get('/datatable', [SubscriptionController::class, 'datatable'])->name('datatable');
+
+
+                Route::group(['prefix' => 'create'], function (){
+                    Route::get('/',[SubscriptionController::class , 'create'])->name('create');
+                    Route::post('/',[SubscriptionController::class , 'store'])->name('store');
+                });
+
+                Route::group(['prefix' => '{id}'], function (){
+                    Route::get('/edit',[SubscriptionController::class , 'edit'])->name('edit');
+                    Route::put('/edit',[SubscriptionController::class , 'update'])->name('update');
+                    Route::delete('/',[SubscriptionController::class , 'destroy'])->name('destroy');
+                    Route::post('/operation',[SubscriptionController::class , 'operation'])->name('operation');
                 });
 
             });

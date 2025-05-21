@@ -105,6 +105,7 @@ return [
     'ended_at' => 'ينتهى في',
     'no_expiration_date' => 'الاشتراك الخاص بي غير محدد بتاريخ انتهاء',
     'cancel_subscription' => 'الغاء اشتراك',
+    'subscriptions' => 'الاشتراكات',
     'active_subscription' => 'تفعيل اشتراك',
     'total_monthly_subscriptions' => 'اجمالي الاشتراكات الشهرية',
     'arrears_of_monthly_subscriptions' => 'متأخرات الاشتراكات الشهرية',

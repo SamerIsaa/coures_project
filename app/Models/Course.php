@@ -46,4 +46,14 @@ class Course extends Model
         return $this->hasMany(Lecture::class);
     }
 
+
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class);
+    }
+
+    public function students()
+    {
+        return $this->hasManyThrough(Student::class, Subscription::class);
+    }
 }
