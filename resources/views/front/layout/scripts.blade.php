@@ -1,0 +1,12 @@
+<script type="text/javascript" src="{{ asset('frontAssets/js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('frontAssets/js/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('frontAssets/js/swiper-bundle.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('frontAssets/js/carousel.js') }}"></script>
+<script type="text/javascript" src="{{ asset('frontAssets/js/plugin.js') }}"></script>
+<script type="text/javascript" src="{{ asset('frontAssets/js/jquery.nice-select.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('frontAssets/js/rangle-slider.js') }}"></script>
+<script type="text/javascript" src="{{ asset('frontAssets/js/countto.js') }}"></script>
+<script type="text/javascript" src="{{ asset('frontAssets/js/shortcodes.js') }}"></script>
+<script type="text/javascript" src="{{ asset('frontAssets/js/animation_heading.js') }}"></script>
+<script type="text/javascript" src="{{ asset('frontAssets/js/lazysize.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('frontAssets/js/main.js') }}"></script>
